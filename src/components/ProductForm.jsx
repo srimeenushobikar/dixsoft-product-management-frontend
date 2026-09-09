@@ -95,7 +95,7 @@ function ProductForm({ product, onSubmit, onCancel }) {
                     <div className="form-group">
                         <label>Product Name</label>
 
-                        <input9
+                        <input
                             type="text"
                             value={prodName}
                             onChange={(e) =>

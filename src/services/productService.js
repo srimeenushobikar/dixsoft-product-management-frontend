@@ -1,8 +1,10 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/product";
+const API_URL =
+    import.meta.env.VITE_API_URL ||
+    "http://localhost:8080/product";
 
-// GET PRODUCTS / SEARCH PRODUCTS
+// GET PRODUCTS / SEARCH PRODUCTSgit status
 export const getProducts = async (search = "") => {
 
     const response = await axios.get(`${API_URL}/get`, {
