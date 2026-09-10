@@ -32,6 +32,23 @@ function App() {
 
   const productsPerPage = 5;
 
+  // CLEAR MESSAGE AFTER 30 SECONDS
+  const showMessage = (text) => {
+    setMessage(text);
+
+    setTimeout(() => {
+      setMessage("");
+    }, 30000);
+  };
+
+  const showError = (text) => {
+    setError(text);
+
+    setTimeout(() => {
+      setError("");
+    }, 30000);
+  };
+
 
   // LOAD PRODUCTS
   const loadProducts = async (searchValue = "") => {
@@ -51,7 +68,7 @@ function App() {
 
       console.error(err);
 
-      setError(
+      showError(
           "Unable to load products. Make sure the backend is running."
       );
 
@@ -135,7 +152,7 @@ function App() {
               )
           );
 
-          setMessage(
+          showMessage(
               "Product updated successfully!"
           );
         }
@@ -147,7 +164,7 @@ function App() {
 
         if (response.success === 1) {
 
-          setMessage(
+          showMessage(
               "Product created successfully!"
           );
 
@@ -165,7 +182,7 @@ function App() {
 
       console.error(err);
 
-      setError(
+      showError(
           "Unable to save product. Please try again."
       );
 
@@ -202,7 +219,7 @@ function App() {
             )
         );
 
-        setMessage(
+        showMessage(
             "Product deleted successfully!"
         );
 
@@ -212,7 +229,7 @@ function App() {
 
       console.error(err);
 
-      setError(
+      showError(
           "Unable to delete product. Please try again."
       );
 
@@ -337,7 +354,7 @@ function App() {
               <input
                   type="text"
                   className="search-input"
-                  placeholder="Search product..."
+                  placeholder="Search by Product Name"
                   value={search}
                   onChange={handleSearch}
               />

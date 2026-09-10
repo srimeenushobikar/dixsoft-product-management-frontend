@@ -56,6 +56,13 @@ function ProductForm({ product, onSubmit, onCancel }) {
         return Object.keys(newErrors).length === 0;
     };
 
+    const isChanged = product
+        ? prodName.trim() !== product.prodName ||
+        Number(unitCost) !== Number(product.unitCost) ||
+        category.trim() !== product.category ||
+        Number(quantity) !== Number(product.quantity)
+        : true;
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -187,9 +194,10 @@ function ProductForm({ product, onSubmit, onCancel }) {
                         <button
                             type="submit"
                             className="submit-button"
+                            disabled={product && !isChanged}
                         >
                             {product
-                                ? "Update Pro duct"
+                                ? "Update Product"
                                 : "Add Product"}
                         </button>
 
